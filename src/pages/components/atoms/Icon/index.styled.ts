@@ -4,6 +4,7 @@ import { styled } from 'styled-components';
 interface IconBoxProps {
     font_size: keyof FontSizeType;
     font_weight: keyof FontWeightType;
+    $disabled?: boolean;
 }
 interface TextProps {
     $hover: boolean;
@@ -25,6 +26,8 @@ const S = {
         transition: 280ms;
         overflow: hidden;
         cursor: pointer;
+        color: ${({ $disabled, theme }) => ($disabled ? theme.color.gray_600 : ``)};
+        pointer-events: ${({ $disabled }) => ($disabled ? `none` : ``)};
         font-size: ${({ font_size, theme }) => theme.font_size.large[font_size]};
         font-weight: ${({ font_weight, theme }) => theme.font_weight[font_weight]};
         &:hover {

@@ -7,10 +7,11 @@ interface IconProps {
     text: string;
     font_size: keyof FontSizeType;
     font_weight: keyof FontWeightType;
+    $disabled: boolean;
     on_click?: React.MouseEventHandler<HTMLDivElement>;
 }
 
-function Icon({ icon, text, font_size, font_weight, on_click }: IconProps) {
+function Icon({ icon, text, font_size, font_weight, on_click, $disabled }: IconProps) {
     const [hover, setHover] = useState(false);
     const isHover = useCallback(() => {
         setHover(true);
@@ -22,6 +23,7 @@ function Icon({ icon, text, font_size, font_weight, on_click }: IconProps) {
 
     return (
         <S.IconBox
+            $disabled={$disabled}
             font_size={font_size}
             font_weight={font_weight}
             onClick={on_click}
