@@ -6,7 +6,7 @@ const S = {
     top: 0;
     height: 100%;
     background-color: ${({ theme }) => theme.color.white};
-    padding: 0px 40px;
+    padding: 10px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
