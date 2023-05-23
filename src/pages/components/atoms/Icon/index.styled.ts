@@ -20,11 +20,13 @@ const S = {
         display: flex;
         flex-direction: column;
         width: fit-content;
+        height: max-content;
+
         justify-content: center;
         align-items: center;
         height: fit-content;
         transition: 280ms;
-        overflow: hidden;
+
         cursor: pointer;
         color: ${({ $disabled, theme }) => ($disabled ? theme.color.gray_600 : ``)};
         pointer-events: ${({ $disabled }) => ($disabled ? `none` : ``)};
@@ -46,11 +48,13 @@ const S = {
         }
     `,
     Text: styled.div<TextProps>`
+        position: absolute;
         transition: 280ms;
         pointer-events: none;
-        position: relative;
-        top: ${({ $hover }) => ($hover ? `0` : `-0.3em`)};
+
+        top: ${({ $hover }) => ($hover ? `4em` : `2em`)};
         opacity: ${({ $hover }) => ($hover ? `100%` : `0%`)};
+        font-size: 0.3em;
     `,
     Icon: styled.div<IconProps>`
         position: relative;
