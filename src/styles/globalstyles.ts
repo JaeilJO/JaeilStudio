@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-family: 'Oswald', sans-serif;
     scroll-behavior: smooth;
+  
   }
   button{
     font-family: 'Oswald', sans-serif;
