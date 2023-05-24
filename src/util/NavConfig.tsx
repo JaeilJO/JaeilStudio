@@ -9,7 +9,7 @@ interface NavConfigType {
   items: NavigationItem[];
 }
 
-export const NavConfig: NavConfigType = {
+const NavConfig: NavConfigType = {
   options: {
     font_size: "sub_title_03",
   },
@@ -23,31 +23,4 @@ export const NavConfig: NavConfigType = {
   ],
 };
 
-export const MainConfig = {
-  items: [
-    {
-      key: 1,
-      id: "about",
-      type: "white",
-      option: { left: false, right: false },
-    },
-    {
-      key: 2,
-      id: "skills",
-      type: "black",
-      option: { left: false, right: false },
-    },
-    {
-      key: 3,
-      id: "works",
-      type: "white",
-      option: { left: false, right: false },
-    },
-    {
-      key: 4,
-      id: "contact",
-      type: "white",
-      option: { left: false, right: false },
-    },
-  ],
-};
+export default NavConfig;
