@@ -1,30 +1,12 @@
-import Section from './components/Section';
-import Header from './components/layouts/Header';
+import Header from "@/components/layouts/Header";
+import Main from "@/components/layouts/Main";
+import MainConfig from "@/util/MainConfig";
 
 export default function Home() {
-    return (
-        <>
-            <Header />
-            <Section
-                id={'about'}
-                type="white"
-                option={{
-                    left: false,
-                    right: true,
-                }}
-            >
-                <></>
-            </Section>
-            <Section
-                id={'skills'}
-                type="black"
-                option={{
-                    left: false,
-                    right: true,
-                }}
-            >
-                <></>
-            </Section>
-        </>
-    );
+  return (
+    <>
+      <Header />
+      <Main items={MainConfig.items} />
+    </>
+  );
 }

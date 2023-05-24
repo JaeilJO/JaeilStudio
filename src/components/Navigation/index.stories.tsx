@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Navigation from ".";
-
-import { NavigationItems } from "../layouts/Header/NavigationItems";
+import NavConfig from "/Users/jaeiljo/Desktop/JaeilStudio/src/util/NavConfig";
 
 const meta: Meta<typeof Navigation> = {
   title: "Navigation",
@@ -13,7 +12,7 @@ type Story = StoryObj<typeof Navigation>;
 
 export const Primary: Story = {
   args: {
-    options: NavigationItems.options,
-    items: NavigationItems.items,
+    options: NavConfig.options,
+    items: NavConfig.items,
   },
 };
