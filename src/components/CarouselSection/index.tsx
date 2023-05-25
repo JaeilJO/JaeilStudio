@@ -1,63 +1,54 @@
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import Section from "../Section";
-import S from "./index.styled";
-import { useCallback, useState } from "react";
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import Section from '../Section';
+import S from './index.styled';
+import { useCallback, useState } from 'react';
 
 interface CarouselSectionProps {
-  options: {
-    type: "black" | "white";
-  };
-  carousel_items?: [];
+    key: number;
+    id?: string;
+    contents?: React.ReactNode[];
+    type?: 'black' | 'white';
 }
 
-const carousel_items = [{ key: 1, item: <></> }];
+function CarouselSection({ key, id, contents, type }: CarouselSectionProps) {
+    if (contents === undefined) return <></>;
+    const [currentPage, setCurrentPage] = useState(0);
+    const max_page_count = contents?.length - 1;
 
-function CarouselSection() {
-  const [currentPage, setCurrentPage] = useState(0);
-  const slideButtonRightHandelr = useCallback(() => {
-    setCurrentPage(currentPage + 1);
-  }, [currentPage]);
-  const slideButtonLeftHandler = useCallback(() => {
-    setCurrentPage(currentPage - 1);
-  }, [currentPage]);
-  return (
-    <S.CarouselBox>
-      <S.SlideButton button_color={"black"} direction={"left"}>
-        <BsChevronLeft />
-      </S.SlideButton>
-      <S.Slider>
-        <Section
-          key={1}
-          id={""}
-          content={
-            <div
-              style={{ backgroundColor: "red", width: "100%", height: "100%" }}
-            >
-              Hello
-            </div>
-          }
-        />
-        <Section
-          key={2}
-          id={""}
-          content={
-            <div
-              style={{
-                backgroundColor: "green",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              Hi
-            </div>
-          }
-        />
-      </S.Slider>
-      <S.SlideButton direction={"right"}>
-        <BsChevronRight />
-      </S.SlideButton>
-    </S.CarouselBox>
-  );
+    const slideButtonRightHandelr = useCallback(() => {
+        setCurrentPage(currentPage + 1);
+    }, [currentPage]);
+    const slideButtonLeftHandler = useCallback(() => {
+        setCurrentPage(currentPage - 1);
+    }, [currentPage]);
+
+    return (
+        <S.CarouselBox id={id}>
+            {/* Arrow */}
+            {currentPage === 0 ? (
+                <></>
+            ) : (
+                <S.LeftSlideButton button_color={type} onClick={slideButtonLeftHandler}>
+                    <BsChevronLeft />
+                </S.LeftSlideButton>
+            )}
+
+            <S.Slider current_page={currentPage}>
+                {contents.map((content, index) => (
+                    <Section key={`${key}_${index}`} content={content} type={type} />
+                ))}
+            </S.Slider>
+
+            {/* Arrow */}
+            {currentPage === max_page_count ? (
+                <></>
+            ) : (
+                <S.RightSlideButton button_color={type} onClick={slideButtonRightHandelr}>
+                    <BsChevronRight />
+                </S.RightSlideButton>
+            )}
+        </S.CarouselBox>
+    );
 }
 
 export default CarouselSection;
