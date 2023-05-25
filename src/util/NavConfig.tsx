@@ -14,6 +14,7 @@ const NavConfig: NavConfigType = {
     font_size: "sub_title_03",
   },
   items: [
+    { key: 1, type: "anchor", text: "Home", href: "home" },
     { key: 1, type: "anchor", text: "About", href: "about" },
     { key: 2, type: "anchor", text: "Skills", href: "skills" },
     { key: 3, type: "anchor", text: "Works", href: "works" },
