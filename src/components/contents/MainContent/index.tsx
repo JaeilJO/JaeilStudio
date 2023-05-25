@@ -1,7 +1,7 @@
 import S from "./index.styled";
 import Face from "../../../../public/face.png";
 
-function AboutContent() {
+function MainContent() {
   return (
     <S.ContentBox>
       <S.TextBox>
@@ -15,4 +15,4 @@ function AboutContent() {
   );
 }
 
-export default AboutContent;
+export default MainContent;

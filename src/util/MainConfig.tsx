@@ -1,5 +1,6 @@
 import { SectionProps } from "@/components/Section";
-import AboutContent from "../components/contents/MainContent/index";
+import MainContent from "../components/contents/MainContent/index";
+import AboutContent from "../components/contents/AboutContent";
 
 interface SectionPropsWithKey extends SectionProps {
   key: number;
@@ -15,14 +16,14 @@ const MainConfig: MainConfigItemsType = {
       key: 1,
       id: "home",
       type: "white",
-      content: <AboutContent />,
+      content: <MainContent />,
       option: { left: false, right: false },
     },
     {
       key: 2,
       id: "about",
       type: "black",
-      content: <></>,
+      content: <AboutContent />,
       option: { left: false, right: false },
     },
     {
