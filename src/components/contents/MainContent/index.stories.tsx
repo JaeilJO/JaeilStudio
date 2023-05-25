@@ -6,16 +6,7 @@ const meta: Meta<typeof AboutContent> = {
   title: "Contents/MainContent",
   component: AboutContent,
   decorators: [
-    (Story) => (
-      <Section
-        id={"section"}
-        content={<Story />}
-        option={{
-          left: false,
-          right: false,
-        }}
-      ></Section>
-    ),
+    (Story) => <Section id={"section"} content={<Story />}></Section>,
   ],
 };
 

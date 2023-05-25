@@ -11,10 +11,6 @@ function Main({ items }: MainConfigItemsType) {
           id={item.id}
           content={item.content}
           type={item.type}
-          option={{
-            left: false,
-            right: false,
-          }}
         />
       ))}
     </S.Main>
