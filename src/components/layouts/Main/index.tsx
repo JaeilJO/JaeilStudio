@@ -1,3 +1,4 @@
+import CarouselSection from "../../CarouselSection";
 import Section from "../../Section";
 import S from "./index.styled";
 import { MainConfigItemsType } from "@/util/MainConfig";
@@ -13,6 +14,7 @@ function Main({ items }: MainConfigItemsType) {
           type={item.type}
         />
       ))}
+      <CarouselSection />
     </S.Main>
   );
 }
