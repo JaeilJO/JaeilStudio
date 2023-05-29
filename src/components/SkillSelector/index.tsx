@@ -1,14 +1,9 @@
 import { BsCaretUpFill, BsCaretDownFill } from "react-icons/bs";
 import S from "./index.styled";
 import { useCallback, useState } from "react";
+import Skills from "../../util/SkillConfig";
 
 function SkillSelector() {
-  const items = [
-    { key: 1, title: "Next.js" },
-    { key: 2, title: "JavaScript" },
-    { key: 3, title: "Styled Components" },
-  ];
-
   const [currentItem, setCurrentItem] = useState(0);
 
   const upButtonHandler = useCallback(() => {
@@ -30,7 +25,7 @@ function SkillSelector() {
 
       <S.Selector>
         <S.SelectorItemUL current_item={currentItem}>
-          {items.map((item) => (
+          {Skills.map((item) => (
             <S.SelectorItemLi key={item.key}>{item.title}</S.SelectorItemLi>
           ))}
         </S.SelectorItemUL>
@@ -38,7 +33,7 @@ function SkillSelector() {
 
       <S.SelectorButton
         onClick={downButtonHandler}
-        disabled={currentItem + 1 === items.length ? true : false}
+        disabled={currentItem + 1 === Skills.length ? true : false}
       >
         <BsCaretDownFill />
       </S.SelectorButton>
