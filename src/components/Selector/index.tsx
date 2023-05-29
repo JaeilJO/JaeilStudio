@@ -18,6 +18,7 @@ function Selector() {
   const downButtonHandler = useCallback(() => {
     setCurrentItem(currentItem + 1);
   }, [currentItem]);
+
   return (
     <S.SelectorBox>
       <S.SelectorButton

@@ -12,8 +12,8 @@ const S = {
   SelectorBox: styled.div`
     display: flex;
     flex-direction: column;
-
     position: relative;
+
     align-items: center;
   `,
   SelectorButton: styled.button<SelectorButtonProps>`
@@ -61,13 +61,13 @@ const S = {
     text-align: center;
     line-height: 100px;
 
-    font-size: ${({ theme }) => theme.font_size.large.title_03};
+    font-size: ${({ theme }) => theme.font_size.large.title_02};
     @media ${({ theme }) => theme.media_query.medium} {
-      font-size: ${({ theme }) => theme.font_size.medium.title_03};
+      font-size: ${({ theme }) => theme.font_size.medium.title_02};
     }
 
     @media ${({ theme }) => theme.media_query.small} {
-      font-size: ${({ theme }) => theme.font_size.small.title_03};
+      font-size: ${({ theme }) => theme.font_size.small.title_02};
     }
   `,
 };
