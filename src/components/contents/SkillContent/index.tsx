@@ -1,4 +1,4 @@
-import Selector from "../../Selector";
+import SkillSelector from "../../SkillSelector";
 import S from "./index.styled";
 
 function SkillContent() {
@@ -8,7 +8,7 @@ function SkillContent() {
         <S.Text>I have experience using</S.Text>
       </S.LeftContent>
       <S.RightContent>
-        <Selector />
+        <SkillSelector />
       </S.RightContent>
     </S.ContentBox>
   );

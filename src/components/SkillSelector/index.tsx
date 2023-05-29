@@ -2,7 +2,7 @@ import { BsCaretUpFill, BsCaretDownFill } from "react-icons/bs";
 import S from "./index.styled";
 import { useCallback, useState } from "react";
 
-function Selector() {
+function SkillSelector() {
   const items = [
     { key: 1, title: "Next.js" },
     { key: 2, title: "JavaScript" },
@@ -46,4 +46,4 @@ function Selector() {
   );
 }
 
-export default Selector;
+export default SkillSelector;
