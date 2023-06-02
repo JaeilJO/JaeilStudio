@@ -5,40 +5,33 @@ const S = {
     width: 100%;
     height: 100%;
     display: flex;
-    @media ${({ theme }) => theme.media_query.medium} {
-      flex-direction: column;
-    }
+    flex-direction: column;
   `,
-  LeftContent: styled.div`
+  TopContent: styled.div`
     width: 100%;
-    height: 100%;
+    height: 80%;
     display: flex;
-    justify-content: right;
-    align-items: center;
-    @media ${({ theme }) => theme.media_query.medium} {
-      justify-content: center;
-      align-items: flex-end;
-    }
-  `,
-  RightContent: styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: flex-end;
+
     @media ${({ theme }) => theme.media_query.medium} {
-      justify-content: center;
-      align-items: flex-start;
     }
+  `,
+  BottomContent: styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: top;
   `,
 
   Text: styled.div`
-    font-size: ${({ theme }) => theme.font_size.large.title_03};
+    font-size: ${({ theme }) => theme.font_size.large.title_01};
     @media ${({ theme }) => theme.media_query.medium} {
-      font-size: ${({ theme }) => theme.font_size.medium.title_03};
+      font-size: ${({ theme }) => theme.font_size.medium.title_01};
     }
     @media ${({ theme }) => theme.media_query.small} {
-      font-size: ${({ theme }) => theme.font_size.small.title_03};
+      font-size: ${({ theme }) => theme.font_size.small.title_01};
     }
   `,
 };

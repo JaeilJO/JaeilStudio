@@ -1,15 +1,16 @@
-import SkillSelector from "../../SkillSelector";
+import SkillAccordion from "../../SkillAccordion";
+
 import S from "./index.styled";
 
 function SkillContent() {
   return (
     <S.ContentBox>
-      <S.LeftContent>
-        <S.Text>I have experience using</S.Text>
-      </S.LeftContent>
-      <S.RightContent>
-        <SkillSelector />
-      </S.RightContent>
+      <S.TopContent>
+        <S.Text>I have experience with</S.Text>
+      </S.TopContent>
+      <S.BottomContent>
+        <SkillAccordion />
+      </S.BottomContent>
     </S.ContentBox>
   );
 }
