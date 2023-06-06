@@ -1,60 +1,71 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
+import { ItemType } from '../../../util/ProjectsConfig';
 
-const S = {
-  Container: styled.div`
-    height: 500px;
-    display: flex;
-    background-color: darkblue;
-    justify-content: space-between;
-    @media ${({ theme }) => theme.media_query.small} {
-      height: 300px;
-    }
-  `,
-  ArrowBox: styled.button`
+interface ItemListProps {
+    currentItem: number;
+}
+
+interface ArrowButtonProps {
+    currentItem: number;
+    projectItems: ItemType[];
+}
+
+const ArrowButtonCommonStlye = styled.button<ArrowButtonProps>`
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
+    padding-bottom: 20%;
     justify-content: center;
     flex-grow: 1;
     color: ${({ theme }) => theme.color.white};
     background: none;
     border: none;
     cursor: pointer;
-    font-size: ${({ theme }) => theme.font_size.large.sub_title_01};
+
+    transition: 280ms;
+    font-size: ${({ theme }) => theme.font_size.large.title_01};
     @media ${({ theme }) => theme.media_query.medium} {
-      font-size: ${({ theme }) => theme.font_size.medium.sub_title_01};
+        font-size: ${({ theme }) => theme.font_size.medium.title_01};
     }
     @media ${({ theme }) => theme.media_query.small} {
-      font-size: ${({ theme }) => theme.font_size.small.sub_title_01};
+        font-size: ${({ theme }) => theme.font_size.small.title_01};
     }
-  `,
+`;
 
-  ShowBox: styled.div`
-    width: 300px;
-    position: relative;
-    background-color: azure;
-    overflow: hidden;
-  `,
+const S = {
+    Container: styled.div`
+        height: 500px;
+        display: flex;
 
-  ItemList: styled.div`
-    height: 100%;
-    display: flex;
-    position: absolute;
-    background-color: aqua;
-  `,
+        justify-content: space-between;
+        @media ${({ theme }) => theme.media_query.small} {
+            height: 300px;
+        }
+    `,
+    PrevButton: styled(ArrowButtonCommonStlye)`
+        pointer-events: ${({ currentItem }) => (currentItem === 0 ? `none` : ``)};
+        color: ${({ theme, currentItem }) => (currentItem === 0 ? theme.color.primary_500 : theme.color.white)};
+    `,
+    NextButton: styled(ArrowButtonCommonStlye)`
+        pointer-events: ${({ currentItem, projectItems }) => (currentItem === projectItems.length - 1 ? `none` : ``)};
+        color: ${({ theme, currentItem, projectItems }) =>
+            currentItem === projectItems.length - 1 ? theme.color.primary_500 : theme.color.white};
+    `,
 
-  Item: styled.div`
-    width: 300px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25em;
-    background-color: brown;
-    color: ${({ theme }) => theme.color.white};
-  `,
-  ItemImage: styled.div``,
-  ItemTitle: styled.div``,
+    ShowBox: styled.div`
+        width: 300px;
+        position: relative;
+        overflow: hidden;
+    `,
+
+    ItemList: styled.div<ItemListProps>`
+        height: 100%;
+        display: flex;
+        transition: 280ms;
+        transform: ${({ currentItem }) => `translateX(-${currentItem * 3}00px)`};
+        position: absolute;
+    `,
 };
 
 export default S;
