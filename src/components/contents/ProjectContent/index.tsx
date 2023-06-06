@@ -1,10 +1,13 @@
+import ProjectsCarousel from "../../ProjectsCarousel";
 import S from "./index.styled";
 
 function ProjectContent() {
   return (
     <S.ContentBox>
       <S.Title>Projects</S.Title>
-      <S.Main></S.Main>
+      <S.Main>
+        <ProjectsCarousel />
+      </S.Main>
     </S.ContentBox>
   );
 }
