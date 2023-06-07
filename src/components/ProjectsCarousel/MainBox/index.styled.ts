@@ -2,12 +2,12 @@ import { styled } from 'styled-components';
 import { ItemType } from '../../../util/ProjectsConfig';
 
 interface ItemListProps {
-    currentItem: number;
+    current_item: number;
 }
 
 interface ArrowButtonProps {
-    currentItem: number;
-    projectItems: ItemType[];
+    current_item: number;
+    project_items_length: number;
 }
 
 const ArrowButtonCommonStlye = styled.button<ArrowButtonProps>`
@@ -44,13 +44,14 @@ const S = {
         }
     `,
     PrevButton: styled(ArrowButtonCommonStlye)`
-        pointer-events: ${({ currentItem }) => (currentItem === 0 ? `none` : ``)};
-        color: ${({ theme, currentItem }) => (currentItem === 0 ? theme.color.primary_500 : theme.color.white)};
+        pointer-events: ${({ current_item }) => (current_item === 0 ? `none` : ``)};
+        color: ${({ theme, current_item }) => (current_item === 0 ? theme.color.primary_500 : theme.color.white)};
     `,
     NextButton: styled(ArrowButtonCommonStlye)`
-        pointer-events: ${({ currentItem, projectItems }) => (currentItem === projectItems.length - 1 ? `none` : ``)};
-        color: ${({ theme, currentItem, projectItems }) =>
-            currentItem === projectItems.length - 1 ? theme.color.primary_500 : theme.color.white};
+        pointer-events: ${({ current_item, project_items_length }) =>
+            current_item === project_items_length - 1 ? `none` : ``};
+        color: ${({ theme, current_item, project_items_length }) =>
+            current_item === project_items_length - 1 ? theme.color.primary_500 : theme.color.white};
     `,
 
     ShowBox: styled.div`
@@ -63,7 +64,7 @@ const S = {
         height: 100%;
         display: flex;
         transition: 280ms;
-        transform: ${({ currentItem }) => `translateX(-${currentItem * 3}00px)`};
+        transform: ${({ current_item }) => `translateX(-${current_item * 3}00px)`};
         position: absolute;
     `,
 };

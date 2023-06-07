@@ -3,23 +3,23 @@ import S from './index.styled';
 import { ItemType } from '../../../util/ProjectsConfig';
 
 interface PaginationProps {
-    currentItem: number;
-    setCurrentItem: Dispatch<SetStateAction<number>>;
-    projectItems: ItemType[];
+    current_item: number;
+    set_current_item: Dispatch<SetStateAction<number>>;
+    project_items: ItemType[];
 }
 
-function Pagination({ currentItem, setCurrentItem, projectItems }: PaginationProps) {
+function Pagination({ current_item, set_current_item, project_items }: PaginationProps) {
     const currentItmeHandler = (key: number) => {
-        setCurrentItem(key);
+        set_current_item(key);
     };
 
     return (
         <S.Container>
             <S.PaginationItemList>
-                {projectItems.map((item) => (
+                {project_items.map((item) => (
                     <S.PaginationItem
                         key={item.key}
-                        $is_current={item.key === currentItem}
+                        $is_current={item.key === current_item}
                         onClick={() => currentItmeHandler(item.key)}
                     />
                 ))}

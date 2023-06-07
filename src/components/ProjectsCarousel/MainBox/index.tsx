@@ -1,36 +1,47 @@
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import S from './index.styled';
 import ProjectItem from '../ProjectItem';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, Fragment, SetStateAction } from 'react';
 import { ItemType } from '../../../util/ProjectsConfig';
 
 interface MainBoxProps {
-    currentItem: number;
-    setCurrentItem: Dispatch<SetStateAction<number>>;
-    projectItems: ItemType[];
+    current_item: number;
+    set_current_item: Dispatch<SetStateAction<number>>;
+    project_items: ItemType[];
 }
 
-function MainBox({ projectItems, currentItem, setCurrentItem }: MainBoxProps) {
+function MainBox({ project_items, current_item, set_current_item }: MainBoxProps) {
+    const projectItemsLength = project_items.length;
     const PrevButtonHandler = () => {
-        setCurrentItem((prev) => prev - 1);
+        set_current_item((prev) => prev - 1);
     };
 
     const NextButtonHandler = () => {
-        setCurrentItem((prev) => prev + 1);
+        set_current_item((prev) => prev + 1);
     };
     return (
         <S.Container>
-            <S.PrevButton projectItems={projectItems} currentItem={currentItem} onClick={PrevButtonHandler}>
+            <S.PrevButton
+                project_items_length={projectItemsLength}
+                current_item={current_item}
+                onClick={PrevButtonHandler}
+            >
                 <BsChevronCompactLeft />
             </S.PrevButton>
+
             <S.ShowBox>
-                <S.ItemList currentItem={currentItem}>
-                    {projectItems.map((item) => (
+                <S.ItemList current_item={current_item}>
+                    {project_items.map((item) => (
                         <ProjectItem key={item.key} title={item.title} git_link={item.git_link} />
                     ))}
                 </S.ItemList>
             </S.ShowBox>
-            <S.NextButton projectItems={projectItems} currentItem={currentItem} onClick={NextButtonHandler}>
+
+            <S.NextButton
+                project_items_length={projectItemsLength}
+                current_item={current_item}
+                onClick={NextButtonHandler}
+            >
                 <BsChevronCompactRight />
             </S.NextButton>
         </S.Container>

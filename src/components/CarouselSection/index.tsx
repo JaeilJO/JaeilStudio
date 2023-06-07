@@ -4,13 +4,13 @@ import S from './index.styled';
 import { useCallback, useState } from 'react';
 
 interface CarouselSectionProps {
-    key: number;
+    item_key: number;
     id?: string;
     contents?: React.ReactNode[];
     type?: 'black' | 'white';
 }
 
-function CarouselSection({ key, id, contents, type }: CarouselSectionProps) {
+function CarouselSection({ item_key, id, contents, type }: CarouselSectionProps) {
     if (contents === undefined) return <></>;
     const [currentPage, setCurrentPage] = useState(0);
     const max_page_count = contents?.length - 1;
@@ -35,7 +35,7 @@ function CarouselSection({ key, id, contents, type }: CarouselSectionProps) {
 
             <S.Slider current_page={currentPage}>
                 {contents.map((content, index) => (
-                    <Section key={`${key}_${index}`} content={content} type={type} />
+                    <Section key={index} content={content} type={type} />
                 ))}
             </S.Slider>
 

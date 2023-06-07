@@ -27,7 +27,7 @@ const MainConfig: MainConfigItemsType = {
             id: 'about',
             type: 'black',
             carousel: true,
-            contents: [<AboutContent />, <div>Hello</div>],
+            contents: [<AboutContent />],
         },
         {
             key: 3,
@@ -37,7 +37,7 @@ const MainConfig: MainConfigItemsType = {
         },
         {
             key: 4,
-            id: 'works',
+            id: 'projects',
             type: 'black',
             content: <ProjectContent />,
         },
