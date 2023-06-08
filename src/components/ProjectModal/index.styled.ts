@@ -1,8 +1,19 @@
 import { styled } from "styled-components";
 
 const S = {
+  Background: styled.div`
+    position: fixed;
+    backdrop-filter: blur(4px);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  `,
   Container: styled.div`
     position: relative;
+
     width: 90vw;
     height: 90vh;
     display: flex;
