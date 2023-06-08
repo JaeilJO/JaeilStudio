@@ -19,6 +19,7 @@ function MainBox({ project_items, current_item, set_current_item }: MainBoxProps
     const NextButtonHandler = () => {
         set_current_item((prev) => prev + 1);
     };
+
     return (
         <S.Container>
             <S.PrevButton
@@ -32,7 +33,14 @@ function MainBox({ project_items, current_item, set_current_item }: MainBoxProps
             <S.ShowBox>
                 <S.ItemList current_item={current_item}>
                     {project_items.map((item) => (
-                        <ProjectItem key={item.key} title={item.title} git_link={item.git_link} />
+                        <ProjectItem
+                            key={item.key}
+                            title={item.title}
+                            git_link={item.git_link}
+                            skills={item.skills}
+                            sub_scribe={item.sub_scribe}
+                            video={item.video}
+                        />
                     ))}
                 </S.ItemList>
             </S.ShowBox>
