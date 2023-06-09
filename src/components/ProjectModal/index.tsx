@@ -25,9 +25,13 @@ function ProjectModal() {
         closeModal();
     };
 
+    const modalHandler = (e: React.MouseEvent) => {
+        e.stopPropagation();
+    };
+
     return (
-        <S.Background>
-            <S.Container>
+        <S.Background onClick={closeButtonHandler}>
+            <S.Container onClick={modalHandler}>
                 <S.CloseButton
                     onMouseLeave={closeButtonMouseLeave}
                     onMouseOver={closeButtonMouseOver}

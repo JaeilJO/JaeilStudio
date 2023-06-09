@@ -41,7 +41,7 @@ const S = {
         font-size: 10px;
         margin: 0;
         border: none;
-        background-color: ${({ theme }) => theme.color.danger};
+        background-color: ${({ theme }) => theme.color.primary_500};
         border-radius: 1em;
         color: ${({ theme }) => theme.color.white};
         transition: 280ms;
@@ -50,11 +50,11 @@ const S = {
         cursor: pointer;
 
         &:hover {
-            width: 50px;
-            padding: 0 30px;
+            width: 80px;
+
             height: 30px;
-            top: 10px;
-            background-color: ${({ theme }) => theme.color.danger};
+
+            background-color: ${({ theme }) => theme.color.primary_500};
             font-size: ${({ theme }) => theme.font_size.large.body_02};
         }
         &:active {
