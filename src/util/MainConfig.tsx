@@ -3,6 +3,7 @@ import MainContent from '../components/contents/MainContent/index';
 import AboutContent from '../components/contents/AboutContent';
 import SkillContent from '../components/contents/SkillContent';
 import ProjectContent from '../components/contents/ProjectContent';
+import ContactCotent from '@/components/contents/ContactContent';
 
 interface SectionPropsWithKey extends SectionProps {
     key: number;
@@ -45,7 +46,7 @@ const MainConfig: MainConfigItemsType = {
             key: 5,
             id: 'contact',
             type: 'white',
-            content: <></>,
+            content: <ContactCotent />,
         },
     ],
 };
