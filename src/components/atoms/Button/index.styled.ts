@@ -43,7 +43,7 @@ const S = {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0.5em;
+    border-radius: 0.3em;
     gap: 0.5em;
   `,
 };
