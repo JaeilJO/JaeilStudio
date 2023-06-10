@@ -14,7 +14,7 @@ const S = {
     font-size: ${({ theme }) => theme.font_size.large.body_01};
     font-weight: ${({ theme }) => theme.font_weight.light};
     padding: 10px;
-    border: 1px solid ${({ theme }) => theme.color.primary_700};
+    border: 1px solid ${({ theme }) => theme.color.gray_700};
     border-radius: 0.3em;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
@@ -29,7 +29,7 @@ const S = {
     padding: 12px;
     font-size: ${({ theme }) => theme.font_size.large.body_02};
     font-weight: ${({ theme }) => theme.font_weight.light};
-    border: 1px solid ${({ theme }) => theme.color.primary_700};
+    border: 1px solid ${({ theme }) => theme.color.gray_700};
     resize: none;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
