@@ -1,35 +1,33 @@
-import { BsFillSendFill } from "react-icons/bs";
-import Button from "../atoms/Button";
-import S from "./index.styled";
-import ContactInput from "./ContactInput";
+import { BsFillSendFill } from 'react-icons/bs';
+import Button from '../atoms/Button';
+import S from './index.styled';
+import ContactInput from './ContactInput';
+import { useContactStore } from '@/zustand/store';
+import { MouseEventHandler } from 'react';
 
 function ContactForm() {
-  return (
-    <S.Form>
-      <ContactInput
-        placeholder="Please enter your Name"
-        title="Name"
-        type="input"
-      />
-      <ContactInput
-        placeholder="Please enter your E-mail"
-        title="E-mail"
-        type="input"
-      />
-      <ContactInput
-        placeholder="Please enter your Message"
-        title="Message"
-        type="textarea"
-      />
+    const [email, name, message] = useContactStore((state) => [state.email, state.name, state.message]);
 
-      <Button
-        text={"Submit"}
-        font_size={"sub_title_02"}
-        font_weight={"light"}
-        icon={<BsFillSendFill />}
-      />
-    </S.Form>
-  );
+    const sendMail = (e: React.MouseEvent<HTMLElement>) => {
+        e.preventDefault();
+        console.log({ email: email, name: name, message: message });
+    };
+
+    return (
+        <S.Form>
+            <ContactInput placeholder="Please enter your Name" title="Name" type="input" />
+            <ContactInput placeholder="Please enter your E-mail" title="E-mail" type="input" />
+            <ContactInput placeholder="Please enter your Message" title="Message" type="textarea" />
+
+            <Button
+                text={'Submit'}
+                font_size={'sub_title_02'}
+                font_weight={'light'}
+                icon={<BsFillSendFill />}
+                on_click={sendMail}
+            />
+        </S.Form>
+    );
 }
 
 export default ContactForm;

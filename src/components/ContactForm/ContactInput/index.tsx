@@ -1,47 +1,85 @@
-import { TextareaHTMLAttributes, useCallback, useRef, useState } from "react";
-import S from "./index.styled";
+import { TextareaHTMLAttributes, useCallback, useRef, useState } from 'react';
+import S from './index.styled';
+import { useContactStore } from '@/zustand/store';
 
 interface ContactInputPorps {
-  placeholder: string;
-  title: string;
-  type: "input" | "textarea";
+    placeholder: string;
+    title: string;
+    type: 'input' | 'textarea';
 }
 
 function ContactInput({ placeholder, title, type }: ContactInputPorps) {
-  const [active, setActive] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const textareaRef = useRef<HTMLTextAreaElement>(null); // textarea를 위한 ref 추가
+    const [active, setActive] = useState(false);
 
-  const onFocus = useCallback(() => {
-    setActive(true);
-  }, [active]);
+    const inputRef = useRef<HTMLInputElement>(null);
 
-  const onBlur = useCallback(() => {
-    setActive(
-      inputRef.current?.value !== "" && textareaRef.current?.value !== ""
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+    const [inputEmail, inputName, inputMessage] = useContactStore((state) => [
+        state.inputEmail,
+        state.inputName,
+        state.inputMessage,
+    ]);
+
+    const onFocus = useCallback(() => {
+        setActive(true);
+    }, [active]);
+
+    const onBlur = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+            setActive(inputRef.current?.value !== '' && textareaRef.current?.value !== '');
+            if (active && inputRef.current?.value !== '' && textareaRef.current?.value !== '') {
+                switch (e.target.name) {
+                    case 'email':
+                        inputEmail({ email: e.target.value });
+                        break;
+                    case 'name':
+                        inputName({ name: e.target.value });
+                        break;
+                    case 'message':
+                        inputMessage({ message: e.target.value });
+                        break;
+                }
+            } else if (!active || inputRef.current?.value === '' || textareaRef.current?.value === '') {
+                switch (e.target.name) {
+                    case 'email':
+                        inputEmail({ email: '' });
+                        break;
+                    case 'name':
+                        inputName({ name: '' });
+                        break;
+                    case 'message':
+                        inputMessage({ message: '' });
+                        break;
+                }
+            }
+        },
+        [active]
     );
-  }, [active]);
-  return (
-    <S.Container>
-      {type === "input" ? (
-        <S.Input
-          placeholder={active ? "" : placeholder}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          ref={inputRef}
-        />
-      ) : (
-        <S.TextArea
-          placeholder={active ? "" : placeholder}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          ref={textareaRef}
-        />
-      )}
 
-      <S.Label $active={active}>{title}</S.Label>
-    </S.Container>
-  );
+    return (
+        <S.Container>
+            {type === 'input' ? (
+                <S.Input
+                    placeholder={active ? '' : placeholder}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
+                    ref={inputRef}
+                    name={title === 'E-mail' ? 'email' : 'name'}
+                />
+            ) : (
+                <S.TextArea
+                    placeholder={active ? '' : placeholder}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
+                    ref={textareaRef}
+                    name={'message'}
+                />
+            )}
+
+            <S.Label $active={active}>{title}</S.Label>
+        </S.Container>
+    );
 }
 
 export default ContactInput;

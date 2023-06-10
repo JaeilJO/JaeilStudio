@@ -12,6 +12,7 @@ const S = {
         font-weight: ${({ theme, font_weight }) => theme.font_weight[font_weight]};
         transition: 280ms;
         pointer-events: none;
+        
         @media ${({ theme }) => theme.media_query.medium} {
             font-size: ${({ theme, font_size }) => theme.font_size.medium[font_size]};
         }

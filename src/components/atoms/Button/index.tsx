@@ -13,14 +13,14 @@ interface ButtonProps {
 function Button({ text, font_size, font_weight, on_click, icon, disabled }: ButtonProps) {
     if (!icon) {
         return (
-            <S.Button $disabled={disabled} font_size={font_size} font_weight={font_weight}>
+            <S.Button $disabled={disabled} font_size={font_size} font_weight={font_weight} onClick={on_click}>
                 {text}
             </S.Button>
         );
     }
 
     return (
-        <S.IconButton $disabled={disabled} font_size={font_size} font_weight={font_weight}>
+        <S.IconButton $disabled={disabled} font_size={font_size} font_weight={font_weight} onClick={on_click}>
             {icon}
             {text}
         </S.IconButton>
