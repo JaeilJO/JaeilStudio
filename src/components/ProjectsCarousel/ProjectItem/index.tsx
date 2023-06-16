@@ -13,6 +13,9 @@ interface ProjectItemProps {
 }
 
 function ProjectItem({ title, git_link, img, skills, sub_scribe, video }: ProjectItemProps) {
+    const gitLinkHandler = () => {
+        window.open(git_link, '_blank');
+    };
     const [openModal] = useModalStore((state) => [state.openModal]);
 
     const modalHandler = () => {
@@ -25,7 +28,13 @@ function ProjectItem({ title, git_link, img, skills, sub_scribe, video }: Projec
             <S.Title>{title}</S.Title>
 
             {git_link ? (
-                <Icon font_size={'sub_title_03'} font_weight={'light'} icon={<BsGithub />} type="black" />
+                <Icon
+                    font_size={'sub_title_03'}
+                    font_weight={'light'}
+                    icon={<BsGithub />}
+                    on_click={gitLinkHandler}
+                    type="black"
+                />
             ) : (
                 <></>
             )}

@@ -1,6 +1,7 @@
 import { TextareaHTMLAttributes, useCallback, useRef, useState } from 'react';
 import S from './index.styled';
 import { useContactStore } from '@/zustand/store';
+import { BiErrorCircle } from 'react-icons/bi';
 
 interface ContactInputPorps {
     placeholder: string;
@@ -78,6 +79,10 @@ function ContactInput({ placeholder, title, type }: ContactInputPorps) {
             )}
 
             <S.Label $active={active}>{title}</S.Label>
+            <S.ErrorMessage>
+                <BiErrorCircle />
+                You should enter your Name
+            </S.ErrorMessage>
         </S.Container>
     );
 }
